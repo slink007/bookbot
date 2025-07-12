@@ -1,3 +1,4 @@
+import sys
 from stats import count_words, count_characters, make_dict_list
 
 def get_book_text(path_to_file):
@@ -17,13 +18,21 @@ def print_report(word_count, sorted_list, path):
             print(f"{sl['char']}: {sl['num']}")
 
 
+def usage():
+    print(f"Usage: python3 {sys.argv[0]} <path_to_book>")
+
+
 def main():
-    book_path = "./books/frankenstein.txt"
+    if (len(sys.argv) == 1):
+        usage()
+        sys.exit(1)
+    
+    book_path = sys.argv[1]
     text = get_book_text(book_path)
     num_words = count_words(text)
     ccnt = count_characters(text)
     sorted_list = make_dict_list(ccnt)
-    print_report(word_count=num_words, sorted_list=sorted_list, path=book_path[2:])
+    print_report(word_count=num_words, sorted_list=sorted_list, path=book_path)
 
 
 if __name__ == "__main__":
