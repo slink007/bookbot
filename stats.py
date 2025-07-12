@@ -13,3 +13,14 @@ def count_characters(text):
         else:
             letter_dictionary[t] = 1
     return letter_dictionary
+
+
+def make_dict_list(char_dict):
+	dict_list = []
+	for key in char_dict.keys():
+		dict_list.append( {"char": key, "num": char_dict[key]} )
+	dict_list.sort(reverse=True, key=lambda x: x["num"])
+	return dict_list
+	
+
+	
